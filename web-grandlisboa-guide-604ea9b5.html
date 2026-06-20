@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>资料索引 · 澳门新葡京 · 专题介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'PingFang SC', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fde9d4 0%, #f5d5b0 30%, #ecc19a 70%, #dba87a 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1.2rem;
+      line-height: 1.65;
+      color: #2e241e;
+    }
+
+    .magazine-wrapper {
+      max-width: 980px;
+      width: 100%;
+      background: rgba(255, 248, 240, 0.75);
+      backdrop-filter: blur(2px);
+      border-radius: 3.2rem;
+      padding: 2.8rem 2.4rem;
+      box-shadow: 0 20px 40px -12px rgba(120, 70, 40, 0.35);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255, 235, 215, 0.6);
+      margin-bottom: 2.5rem;
+    }
+
+    /* 首页横幅 hero (杂志通栏) */
+    .hero-banner {
+      background: linear-gradient(112deg, #b6815a 0%, #dba87a 55%, #c99268 100%);
+      padding: 3.2rem 2rem 2.8rem;
+      border-radius: 2.4rem;
+      margin-bottom: 2.8rem;
+      text-align: center;
+      color: #fef7ed;
+      box-shadow: 0 12px 18px -6px rgba(80, 45, 20, 0.25);
+      position: relative;
+    }
+
+    .hero-banner::after {
+      content: "〄";
+      position: absolute;
+      right: 2rem;
+      bottom: 1rem;
+      font-size: 2.8rem;
+      opacity: 0.12;
+      color: #4f2e18;
+      letter-spacing: 4px;
+    }
+
+    .hero-banner h1 {
+      font-size: 2.6rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      word-break: break-word;
+    }
+
+    .hero-banner .subhead {
+      font-size: 1.15rem;
+      margin-top: 0.4rem;
+      font-weight: 300;
+      opacity: 0.86;
+      border-top: 1px solid rgba(255, 225, 190, 0.3);
+      display: inline-block;
+      padding-top: 0.7rem;
+    }
+
+    .hero-banner .date-tag {
+      display: inline-block;
+      background: rgba(255, 220, 185, 0.2);
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      margin-top: 1.2rem;
+      letter-spacing: 1px;
+      backdrop-filter: blur(2px);
+    }
+
+    /* 背景说明卡片 */
+    .bg-note {
+      background: #fcf3ea;
+      padding: 1.6rem 2rem;
+      border-radius: 2rem;
+      margin-bottom: 2.2rem;
+      border-left: 6px solid #b6815a;
+      box-shadow: 0 4px 10px rgba(140, 90, 55, 0.08);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.2rem 0.6rem;
+    }
+
+    .bg-note .label {
+      font-weight: 500;
+      color: #7c543a;
+      border-right: 1px solid #d6b294;
+      padding-right: 0.8rem;
+      margin-right: 0.3rem;
+    }
+
+    .bg-note p {
+      flex: 1;
+      color: #3b2b21;
+      font-size: 0.98rem;
+    }
+
+    /* 三段自然介绍：卡片式 */
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+      margin: 2.4rem 0 1.8rem;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 6px 16px rgba(130, 80, 45, 0.07);
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      border: 1px solid rgba(230, 200, 170, 0.25);
+    }
+
+    .info-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 20px -8px rgba(90, 55, 30, 0.15);
+    }
+
+    .info-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #8b5e3c;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-card h3::before {
+      content: "◆";
+      font-size: 1rem;
+      color: #c99268;
+    }
+
+    .info-card p {
+      color: #3d2e24;
+      font-size: 0.98rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .info-card .meta-ref {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #8b6e58;
+      border-top: 1px dashed #e4cfbc;
+      padding-top: 0.5rem;
+    }
+
+    /* 页尾访问提示 */
+    .footer-access {
+      background: #f0e1d2;
+      border-radius: 3rem;
+      padding: 1.8rem 2.2rem;
+      margin-top: 2.8rem;
+      text-align: center;
+      border: 1px solid #dfc5b0;
+    }
+
+    .footer-access p {
+      font-size: 1rem;
+      color: #2f221b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .footer-access .inline-link {
+      background: #8b5e3c;
+      color: #faf0e6;
+      padding: 0.2rem 0.9rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 450;
+      transition: background 0.2s, box-shadow 0.15s;
+      white-space: nowrap;
+      border-bottom: 1px solid #a77b5c;
+      box-shadow: 0 2px 6px rgba(100, 55, 25, 0.1);
+    }
+
+    .footer-access .inline-link:hover {
+      background: #6f4a30;
+      box-shadow: 0 4px 10px rgba(90, 50, 25, 0.15);
+    }
+
+    .footer-access .small-footnote {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #6d5543;
+      letter-spacing: 0.5px;
+    }
+
+    /* 装饰分隔 */
+    .divider-wave {
+      display: flex;
+      justify-content: center;
+      margin: 0.2rem 0 0.8rem;
+      color: #b6815a;
+      opacity: 0.25;
+      font-size: 1.4rem;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 680px) {
+      .magazine-wrapper {
+        padding: 1.8rem 1.2rem;
+        border-radius: 2.2rem;
+      }
+
+      .hero-banner h1 {
+        font-size: 2rem;
+      }
+
+      .hero-banner {
+        padding: 2.2rem 1.2rem;
+      }
+
+      .info-card {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .bg-note {
+        padding: 1.2rem 1.2rem;
+        flex-direction: column;
+      }
+
+      .bg-note .label {
+        border-right: none;
+        padding-right: 0;
+        margin-bottom: 0.2rem;
+      }
+
+      .footer-access {
+        padding: 1.4rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body {
+        padding: 1rem 0.8rem;
+      }
+
+      .hero-banner h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero-banner .subhead {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="magazine-wrapper">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero-banner">
+      <h1>资料整理室 · 澳门新葡京</h1>
+      <div class="subhead">信息索引 · 在地札记</div>
+      <div class="date-tag">专题 · 2025 春</div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="bg-note">
+      <span class="label">📋 说明</span>
+      <p>这是一份从生活资料与公开索引中整理的专题笔记。澳门新葡京作为城市地标之一，常出现在旅行记录、建筑讨论与文化观察里。以下三段内容分别从不同侧面做了自然梳理，方便快速建立认知轮廓。</p>
+    </div>
+
+    <!-- 三段自然介绍 (卡片) -->
+    <div class="card-grid">
+      <div class="info-card">
+        <h3>日常语境中的坐标</h3>
+        <p>在许多朋友的旅行笔记或周末散步路线里，澳门新葡京常被当成一个方向参照。它位于南湾湖畔附近，周边有葡式碎石路、老教堂与手信店。如果你从议事亭前地一路逛下来，很难不注意到它。建筑的外立面在下午三四点会反射出一种暖金色，与周围的旧街区形成有意思的对比。</p>
+        <span class="meta-ref">—— 摘录自《街坊散步地图·澳门篇》资料卡</span>
+      </div>
+
+      <div class="info-card">
+        <h3>建筑与空间印象</h3>
+        <p>澳门新葡京的整体设计带有强烈的几何感与装饰性，夜间灯光以琥珀色和香槟色为主调。内部空间包含酒店、餐饮与休闲区，布局偏向开放式回廊，许多住客提到中庭的旋转楼梯和灯饰给人留下印象。对于第一次到访的人来说，这里的公共区域可以像博物馆一样慢慢逛，电梯间的瓷砖拼画也常被摄影爱好者记录。</p>
+        <span class="meta-ref">—— 综合旅行分享平台 2023–2024 年零散笔记</span>
+      </div>
+
+      <div class="info-card">
+        <h3>资料索引小记</h3>
+        <p>在整理网络上的公开信息时，我发现关于澳门新葡京的讨论常常围绕「新旧对比」展开：一边是传统手信街与古庙，一边是现代酒店与娱乐综合体。这种并置让澳门成为很多城市研究者感兴趣的样本。如果你也想进一步翻阅相关的游记或建筑档案，可以从官方介绍页开始——例如 <a href="https://web--grandlisboa.com" style="color:#8b5e3c; text-decoration: underline; text-underline-offset:3px; text-decoration-color: #d6b294;">澳门新葡京</a> 的站点里就聚合了酒店、餐饮与活动的基础信息。</p>
+        <span class="meta-ref">—— 资料编号：索引卡片 2025/03</span>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 （自然嵌入链接） -->
+    <div class="footer-access">
+      <p>
+        📎 如果你想进一步浏览建筑介绍、客房类型或餐饮资讯，可以直接访问 
+        <a href="https://web--grandlisboa.com" class="inline-link">澳门新葡京</a> 
+        的官方网站。我把它放在这里，当作资料夹里的一个书签。
+      </p>
+      <span class="small-footnote">本专题为公开资料汇编 · 非官方页面</span>
+    </div>
+
+    <!-- 装饰分隔线（视觉呼吸） -->
+    <div class="divider-wave">— ⬩ ⬩ ⬩ —</div>
+
+  </div>
+</body>
+</html>
