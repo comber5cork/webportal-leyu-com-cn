@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>开元棋牌 · 简明指南与访问提醒</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #fafaf8;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e1e1e;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 2.4rem 1.8rem 3rem;
+    }
+    /* 窄正文宽度视觉，保持呼吸感 */
+    .page > * + * {
+      margin-top: 2.6rem;
+    }
+
+    /* hero 横幅 —— 杂志式字标 + 简洁引语 */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+      border-bottom: 1px solid #d4d4cf;
+      padding-bottom: 2rem;
+      margin-bottom: 0.25rem;
+    }
+    .hero-meta {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      color: #8c8c86;
+      text-transform: uppercase;
+    }
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 450;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: #1a1a18;
+      margin-top: 0.1rem;
+    }
+    .hero h1 span {
+      font-weight: 250;
+      color: #6b6b63;
+    }
+
+    /* 背景说明 —— 调性：杂志专题摘要 */
+    .brief {
+      padding: 0.75rem 0 0.5rem;
+      border-left: 3px solid #c7c7be;
+      padding-left: 1.6rem;
+      font-size: 0.98rem;
+      color: #3a3a36;
+    }
+    .brief p {
+      margin-bottom: 0.9rem;
+    }
+    .brief p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* 三段式自然介绍：卡片极简风格，标题清晰 */
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      margin-top: 2.8rem;
+    }
+    .feature-item {
+      border-top: 1px solid #e3e3dc;
+      padding-top: 1.5rem;
+    }
+    .feature-item h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #2a2a26;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .feature-item h2 .num {
+      font-size: 1rem;
+      font-weight: 350;
+      color: #9b9b90;
+      margin-right: 0.2rem;
+    }
+    .feature-item p {
+      font-size: 0.96rem;
+      color: #3e3e38;
+      max-width: 68ch;
+    }
+    .feature-item p + p {
+      margin-top: 0.8rem;
+    }
+
+    /* 引用提示 / 访问提醒，增加场景感 */
+    .access-note {
+      background: #f1f1eb;
+      padding: 1.5rem 2rem;
+      border-radius: 0;
+      margin: 2.8rem 0 1.8rem;
+      font-size: 0.94rem;
+      color: #2d2d28;
+      border-left: 3px solid #aaa99e;
+      line-height: 1.8;
+    }
+    .access-note strong {
+      font-weight: 550;
+    }
+    .access-note a {
+      color: #2b5a4a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      font-weight: 450;
+    }
+    .access-note a:hover {
+      color: #0d3329;
+      text-decoration-thickness: 2px;
+    }
+
+    /* FAQ 摘要 —— 极简压缩，信息密度高 */
+    .faq-mini {
+      margin-top: 2.2rem;
+      border-top: 1px solid #d4d4cf;
+      padding-top: 1.8rem;
+    }
+    .faq-mini h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #5f5f57;
+      margin-bottom: 0.9rem;
+    }
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      margin-bottom: 1.2rem;
+    }
+    .faq-item .q {
+      font-weight: 480;
+      color: #1e1e1a;
+      font-size: 0.95rem;
+    }
+    .faq-item .a {
+      font-size: 0.9rem;
+      color: #5a5a52;
+      padding-left: 0.8rem;
+      border-left: 1.5px solid #d1d1c7;
+    }
+
+    /* 页尾：低调版权/指向 */
+    .footer-note {
+      margin-top: 3.2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #deded6;
+      font-size: 0.8rem;
+      color: #8a8a80;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem 1.2rem;
+    }
+    .footer-note a {
+      color: #5d5d55;
+      text-decoration: none;
+      border-bottom: 1px dotted #b5b5ab;
+    }
+    .footer-note a:hover {
+      border-bottom: 1px solid #2b2b22;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 560px) {
+      .page {
+        padding: 1.8rem 1.2rem 2.4rem;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .access-note {
+        padding: 1.2rem 1.4rem;
+      }
+      .feature-grid {
+        gap: 1.8rem;
+      }
+    }
+    @media (max-width: 380px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 横幅：杂志专题式标题 -->
+  <header class="hero">
+    <div class="hero-meta">专题 · 简明指南</div>
+    <h1>开元棋牌 <span>// 访问与场景</span></h1>
+  </header>
+
+  <!-- 背景说明：从简明指南切入 -->
+  <div class="brief">
+    <p>对于期望快速了解棋牌类平台基础逻辑与安全访问方式的用户，本页以杂志专题形式梳理核心要点。不堆砌术语，不渲染情绪，仅提供客观的功能结构与使用情境参考。</p>
+    <p>以下内容基于平台公开特性整理，涉及访问路径、账户场景及常见疑问摘要。所有信息均以实际体验为准，建议结合自身需求判断。</p>
+  </div>
+
+  <!-- 三段自然介绍：特点、场景、环境提示 -->
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h2><span class="num">01</span> 功能结构简述</h2>
+      <p><a href="https://zhweb--kaiyuan.com" style="color:#2b5a4a;text-decoration:underline;font-weight:450;">开元棋牌</a> 整合了数种经典棋牌玩法与实时对战框架，界面以信息层级清晰为首要设计原则。用户可通过个人账户完成游戏选择、对局参与及数据追踪；底层采用标准加密协议保障基础通道安全。无需安装额外组件，主流浏览器均可直接加载核心页面。</p>
+      <p>平台目前支持桌面端与移动端自适应布局，核心流程（注册、登录、对局、结算）保持一致的交互逻辑，降低跨设备切换的学习成本。</p>
+    </div>
+
+    <div class="feature-item">
+      <h2><span class="num">02</span> 典型使用场景</h2>
+      <p>日常休闲场景下，用户通常利用碎片时间进行快速对局。平台提供不同时长与回合数的模式选择，便于匹配个人节奏。另一方面，部分用户将棋牌视为策略与概率的练习场景，通过反复对局记录自身决策模式。两种取向在平台内均有对应功能支持，不预设单一使用目的。</p>
+      <p>团队或好友之间亦可创建私人房间，自定义基本规则参数。该场景下平台仅提供技术框架，不介入具体规则协商。</p>
+    </div>
+
+    <div class="feature-item">
+      <h2><span class="num">03</span> 访问环境与稳定性</h2>
+      <p>为确保页面响应与数据同步的可靠性，推荐使用网络延迟低于 80ms 的稳定连接。平台前端采用渐进式加载策略，弱网环境下仍可保证核心界面优先渲染。同时，账户信息与对局数据的同步采用非对称校验机制，降低因网络波动导致的状态不一致风险。</p>
+      <p>如遇访问异常，建议优先检查本地网络环境与浏览器版本，或通过平台公告页了解计划性维护排期。</p>
+    </div>
+  </div>
+
+  <!-- 访问提醒（包含自然嵌入的 a 标签） -->
+  <div class="access-note">
+    <strong>访问提醒：</strong> 建议直接通过域名索引进入主站，避免使用未经核实的第三方聚合入口。当前推荐方式为在地址栏输入 <a href="https://zhweb--kaiyuan.com">开元棋牌</a> 所在根域。部分区域可能受网络策略影响，请以实际连通情况为准。首次使用前可浏览平台内的「帮助」模块，其中包含账户创建、权限验证及常见操作指引。不要向任何第三方透露账户凭据，平台客服不会主动索取密码或验证码。
+  </div>
+
+  <!-- FAQ 摘要：四个高频问题 -->
+  <div class="faq-mini">
+    <h3>常见疑问摘要</h3>
+    <div class="faq-item">
+      <span class="q">Q：是否需要注册才能体验全部功能？</span>
+      <span class="a">部分基础对局模式支持游客试玩，但完整功能（保存历史、好友系统、个性化设置）要求注册并绑定有效联系方式。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：对局数据是否长期保留？</span>
+      <span class="a">账户下的对局记录默认保留 180 天，用户可在设置中手动导出或删除。未登录状态下的临时数据仅在当前会话有效。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：平台是否限制同时登录设备？</span>
+      <span class="a">同一账户最多可在两台设备同时保持在线状态，超出后最早登录的设备将被提示下线。该策略用于降低账户共享风险。</span>
+    </div>
+    <div class="faq-item">
+      <span class="q">Q：如何判断自己访问的是否为官方界面？</span>
+      <span class="a">核对浏览器地址栏域名是否为 <code style="background:#e5e5de;padding:0.1rem 0.4rem;border-radius:2px;">zhweb--kaiyuan.com</code>，并确认页面顶部存在完整的平台标识与 SSL 证书（锁形图标）。避免点击来源不明的短链接或图片跳转。</span>
+    </div>
+  </div>
+
+  <!-- 页尾，包含指向目标网站的额外链接（自然） -->
+  <footer class="footer-note">
+    <span>杂志专题 · 内容基于公开信息整理</span>
+    <span><a href="https://zhweb--kaiyuan.com">开元棋牌</a> — 主站索引</span>
+  </footer>
+</div>
+</body>
+</html>
