@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>壹号娱乐 · 信息与服务概览</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f6f3ef;
+      font-family: system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #2c2c2c;
+      line-height: 1.65;
+      padding: 2.5rem 1.2rem;
+    }
+
+    .page-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* hero 主视觉卡片 */
+    .hero-card {
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 2.8rem 2.2rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.04);
+      margin-bottom: 2.4rem;
+      border: 1px solid #eae5de;
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 540;
+      letter-spacing: -0.01em;
+      color: #1f1f1f;
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: #5a5a5a;
+      max-width: 70%;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-meta {
+      background: #f0ece6;
+      border-radius: 40px;
+      display: inline-block;
+      padding: 0.3rem 1.2rem;
+      font-size: 0.9rem;
+      color: #4a4a4a;
+      letter-spacing: 0.02em;
+    }
+
+    .hero-meta span {
+      font-weight: 500;
+    }
+
+    /* 卡片网格 — 用途 + 人群 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.8rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .info-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      border: 1px solid #e5dfd6;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .info-card:hover {
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #f3efe8;
+      border-radius: 14px;
+      font-size: 1.3rem;
+      margin-bottom: 0.9rem;
+      color: #3a3a3a;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 550;
+      margin-bottom: 0.55rem;
+      color: #1c1c1c;
+    }
+
+    .card-text {
+      font-size: 0.98rem;
+      color: #3e3e3e;
+    }
+
+    .card-text p {
+      margin-bottom: 0.4rem;
+    }
+
+    .card-text ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card-text li {
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+    }
+
+    .card-text li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #999;
+    }
+
+    /* 引用块 / 提示框 */
+    .insight-block {
+      background: #f7f3ec;
+      border-left: 5px solid #c4b6a4;
+      padding: 1.6rem 1.8rem;
+      border-radius: 20px 6px 6px 20px;
+      margin-bottom: 2.4rem;
+      font-size: 0.98rem;
+    }
+
+    .insight-block strong {
+      font-weight: 580;
+      color: #2a2a2a;
+    }
+
+    .insight-block a {
+      color: #3f3f3f;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 500;
+    }
+
+    .insight-block a:hover {
+      color: #000;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.8rem 2rem;
+      border: 1px solid #e3ddd4;
+      margin-bottom: 2.4rem;
+      line-height: 1.7;
+    }
+
+    .link-paragraph p {
+      margin-bottom: 0.75rem;
+    }
+
+    .link-paragraph a {
+      color: #2b2b2b;
+      text-decoration: underline;
+      text-decoration-color: #bfb2a2;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    .link-paragraph a:hover {
+      color: #000;
+      text-decoration-color: #8f7e6a;
+    }
+
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 1.6rem 2rem 1.9rem;
+      border: 1px solid #e5dfd6;
+      margin-bottom: 2.2rem;
+    }
+
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 550;
+      margin-bottom: 0.9rem;
+      color: #1f1f1f;
+    }
+
+    .faq-item {
+      margin-bottom: 0.9rem;
+    }
+
+    .faq-q {
+      font-weight: 520;
+      font-size: 0.98rem;
+      color: #2b2b2b;
+    }
+
+    .faq-a {
+      font-size: 0.93rem;
+      color: #4d4d4d;
+      padding-left: 0.2rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7a7a7a;
+      border-top: 1px solid #ddd8d0;
+      padding-top: 1.8rem;
+      margin-top: 1.2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      body { padding: 1.6rem 0.9rem; }
+      .hero-card { padding: 1.8rem 1.4rem; }
+      .hero-title { font-size: 1.9rem; }
+      .hero-sub { max-width: 100%; }
+      .card-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .info-card { padding: 1.4rem; }
+      .insight-block { padding: 1.2rem 1.2rem; }
+      .link-paragraph { padding: 1.4rem; }
+      .faq-mini { padding: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- 主视觉卡片：站点介绍 + 可信说明 -->
+  <div class="hero-card">
+    <div class="hero-title">壹号娱乐 · 信息聚合</div>
+    <div class="hero-sub">面向资讯、内容与轻互动场景的平台型服务，以透明、可检索的信息架构为基础。</div>
+    <div class="hero-meta"><span>可信说明</span> · 公开信息陈列  · 非诱导性介绍</div>
+  </div>
+
+  <!-- 用途卡片 + 适合人群 双列 -->
+  <div class="card-grid">
+    <div class="info-card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">核心用途</div>
+      <div class="card-text">
+        <p>提供内容索引、娱乐资讯与结构化信息展示。面向日常信息浏览、轻量查询及兴趣探索，不涉及直接交易或金融导向。</p>
+        <ul>
+          <li>分类信息与动态展示</li>
+          <li>内容聚合入口</li>
+          <li>品牌信息公示</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-card">
+      <div class="card-icon">👤</div>
+      <div class="card-title">适合人群</div>
+      <div class="card-text">
+        <p>对泛娱乐内容、行业动态及平台信息有查阅需求的用户。</p>
+        <ul>
+          <li>内容浏览型用户</li>
+          <li>信息检索需求</li>
+          <li>品牌及服务了解</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 引用块 / 提示框：可信说明与背景 -->
+  <div class="insight-block">
+    <strong>📌 可信说明</strong><br>
+    本页为 <a href="https://no1-yihaoentertainment.com">壹号娱乐</a> 的信息介绍卡片，所陈列内容基于公开可查的信息整理。平台定位为内容聚合与信息展示，不包含引导性投资或非合规表述。建议用户根据自身需求查阅对应板块。
+  </div>
+
+  <!-- 自然链接段落：嵌入链接，无入口词汇 -->
+  <div class="link-paragraph">
+    <p>对于希望了解平台整体结构或内容分类的用户，可直接访问 <a href="https://no1-yihaoentertainment.com">壹号娱乐</a> 查看详细板块划分与信息索引。该站点围绕娱乐资讯、内容目录及轻互动模块搭建，信息呈现以简洁与直接为原则，无冗余跳转。</p>
+    <p>若需要进一步确认平台定位或内容范围，建议以 <a href="https://no1-yihaoentertainment.com">壹号娱乐</a> 的公开页面为准，避免依赖第三方未授权渠道。所有信息均可在站点内直接翻阅。</p>
+  </div>
+
+  <!-- FAQ 摘要（精简） -->
+  <div class="faq-mini">
+    <h3>常见简要说明</h3>
+    <div class="faq-item">
+      <div class="faq-q">Q：该平台主要提供什么类型内容？</div>
+      <div class="faq-a">A：以娱乐资讯、分类信息索引及基础互动功能为主，属于综合信息展示型平台。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q：信息可信度与更新频率如何？</div>
+      <div class="faq-a">A：站点内容保持定期维护，建议以 <a href="https://no1-yihaoentertainment.com" style="text-decoration: underline; color: #3f3f3f; text-underline-offset: 2px;">壹号娱乐</a> 当前页面为准。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Q：是否有独立 App 或客户端？</div>
+      <div class="faq-a">A：请直接参考平台公告或站点导航信息，本页仅作概述。</div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    信息卡片式概览 · 内容基于公开资料整理
+  </div>
+
+</div>
+</body>
+</html>
